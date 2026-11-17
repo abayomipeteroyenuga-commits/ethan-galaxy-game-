@@ -1,4 +1,4 @@
-const DATE_KEY = /^\\d{4}-\\d{2}-\\d{2}$/;
+const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
 const ACHIEVEMENTS = [
   { id: 'first-flight', name: 'First Flight', description: 'Clear your first campaign mission', reward: 100 },
   { id: 'guardian-slayer', name: 'Guardian Slayer', description: 'Defeat a galaxy Guardian', reward: 175 },
@@ -34,7 +34,7 @@ export function dailyOperationFor(value = new Date()) {
   if (!validDateKey(date)) return { date: '', mission: 1, galaxy: 0, difficulty: 1.25, reward: 350 };
   const seed = Number(date.replace(/-/g, '')) >>> 0;
   let mixed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
-  mixed ^= mixed >>> 16;
+  mixed = (mixed ^ (mixed >>> 16)) >>> 0;
   const mission = (mixed % 30) + 1;
   return {
     date,
