@@ -1,0 +1,19 @@
+{
+  "name": "Ethan Galaxy Defender",
+  "short_name": "Galaxy Defender",
+  "description": "Defend six galaxies in Ethan's space shooter.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#070c1c",
+  "theme_color": "#070c1c",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

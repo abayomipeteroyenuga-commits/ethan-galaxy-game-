@@ -1,0 +1,18 @@
+name: Galaxy Defender validation
+on:
+  push:
+    branches: [main, feat/galaxy-defender-career]
+  pull_request:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check browser module syntax
+        run: node --input-type=module --check < game.js && node --check progression.mjs
+      - name: Run progression tests
+        run: node --test progression.test.mjs
